@@ -1,5 +1,19 @@
+body {
+	position: relative;
+}
+#game-bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 1;
+}
 #game {
   border: 1px dashed black;
   display: block;
+  position: relative;
   margin: auto;
+  z-index: 3;
 }
