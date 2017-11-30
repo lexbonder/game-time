@@ -1,6 +1,13 @@
 body {
 	position: relative;
 }
+
+div{
+  position: absolute;
+  top: 10;
+  left: 10;
+
+}
 #game-bg {
 	position: absolute;
 	top: 0;
