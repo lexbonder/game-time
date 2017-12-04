@@ -6,14 +6,17 @@
   <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-  <div>
-    <button id="start-button">Start</button>
-    <button id="reset-button">Reset</button>
-    <button id="pause-button">Pause</button>
-    <h1>Lives: <span class="lives-left">3</span>
-  </div>
+  <div class="game-container">
+    <div class="btn-container">
+      <button id="start-button">Start</button>
+      <button id="reset-button">Reset</button>
+      <button id="pause-button">Pause</button>
+      <h1 id="lives">Lives: <span class="lives-left">3</span></h1>
+    </div>
+    <!-- <div class="start-menu"></div> -->
 	<canvas id="game-bg" height="567" width="400"></canvas>
   <canvas id="game" height="567" width="400"></canvas>
+  </div>
   <script src="main.bundle.js"></script>
 </body>
 </html>
