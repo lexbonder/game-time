@@ -2,12 +2,12 @@ body {
 	position: relative;
 }
 
-div{
+div {
   position: absolute;
   top: 10;
   left: 10;
-
 }
+
 #game-bg {
 	position: absolute;
 	top: 0;
@@ -17,6 +17,7 @@ div{
 	margin: auto;
 	z-index: 1;
 }
+
 #game {
   border: 1px dashed black;
   display: block;
