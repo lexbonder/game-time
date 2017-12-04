@@ -1,27 +1,47 @@
-body {
-	position: relative;
+.game-container {
+  position: relative;
+  width: 401px;
+  margin: auto;
 }
-
-div {
-  position: absolute;
-  top: 10;
-  left: 10;
+#btn-container{
+  display: block;
 }
 
 #game-bg {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
 	z-index: 1;
 }
 
 #game {
   border: 1px dashed black;
-  display: block;
-  position: relative;
-  margin: auto;
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0px;
   z-index: 3;
+}
+
+#lives {
+  position: absolute;
+  left: 10px;
+  bottom: -20px;
+  width: 200px;
+  color: #ff0066;
+  z-index: 4;
+}
+.start-menu {
+  /*position: absolute;*/
+/*  top: 300px;
+  left: 150px;*/
+}
+#start-button {
+  /*font-size: 24px;*/
+/*  width: 100px;
+  height: 50px;*/
+  border: none;
+  background-color: #FF0066;
+  z-index: 5;
+}
+button:hover {
+  z-index: 5;
+  background-color: white;
 }
