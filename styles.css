@@ -55,3 +55,17 @@ button:hover {
   z-index: 5;
   background-color: white;
 }
+
+#game-over-screen {
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  top: 200px;
+  z-index: 10;
+  color: #ff0066;
+  font-size: 24px;
+}
+#game-over-screen p {
+  width: 155px;
+  margin: auto;
+}
