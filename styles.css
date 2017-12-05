@@ -28,6 +28,16 @@
   color: #ff0066;
   z-index: 4;
 }
+
+#level {
+  position: absolute;
+  right: 10px;
+  bottom: -20px;
+  width: 130px;
+  color: #ff0066;
+  z-index: 4;
+}
+
 .start-menu {
   /*position: absolute;*/
 /*  top: 300px;
