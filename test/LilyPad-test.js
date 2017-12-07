@@ -6,7 +6,7 @@ describe('LilyPad', function() {
   let lilyPad;
   
   beforeEach(function() {
-    lilyPad = new LilyPad(10, 10, 10, 10);
+    lilyPad = new LilyPad(10, 10, 10, 10, 'transparent');
   })
 
   it('Should be a function', function() {

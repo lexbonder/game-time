@@ -34,21 +34,21 @@ describe('Game', function() {
   })
 
   it('Should be able to clear the landed lilypads', function() {
-    let lilyPad = new LilyPad(10,10,10,10)
+    let lilyPad = new LilyPad(10,10,10,10, 'transparent')
     game.lilyArray.push(lilyPad)
 
     assert.equal(lilyPad.color, 'transparent');
-    lilyPad.color = 'lightgreen';
-    assert.equal(lilyPad.color, 'lightgreen');
+    lilyPad.color = '#A3C544';
+    assert.equal(lilyPad.color, '#A3C544');
     game.clearLilys();
     assert.equal(lilyPad.color, 'transparent');
   })
 
   it('Should increase the speed of logs, turtles, and cars', function() {
-    let log = new Log(10,10,10,10,10,'brown');
+    let log = new WaterObject(10,10,10,10,10,'brown');
     let leftCar = new Vehicle(10,10,10,10,10,'red');
     let rightCar = new Vehicle(10,10,10,10,-10,'red');
-    let turtle = new Turtle(10,10,10,10,-10,'green');
+    let turtle = new WaterObject(10,10,10,10,-10,'green');
 
     game.logs.push(log) 
     game.laneLeft.push(leftCar)
