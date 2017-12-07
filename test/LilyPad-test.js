@@ -31,6 +31,6 @@ describe('LilyPad', function() {
     assert.equal(lilyPad.color, 'transparent')
     frogger.landedOnPad([lilyPad])
     assert.equal(lilyPad.landedOn, true)
-    assert.equal(lilyPad.color, 'lightgreen')
+    assert.equal(lilyPad.color, '#A3C544')
   })
 })
