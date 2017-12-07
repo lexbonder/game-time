@@ -3,57 +3,77 @@
   width: 401px;
   margin: auto;
 }
-#btn-container{
+.text-container{
   display: block;
 }
 
 #game-bg {
 	z-index: 1;
+
 }
 
 #game {
   border: 1px dashed black;
   display: inline-block;
   position: absolute;
-  top: 18px;
+  top: -1px;
   right: 0px;
   z-index: 3;
 }
+#title-banner {
+  font-family: 'Press Start 2P', cursive;
+  position: absolute;
+  top: -10px;
+  left: 100px;
+  color: #FFFD54;
 
+}
 #lives {
+  font-family: arial;
   position: absolute;
   left: 10px;
   bottom: -20px;
   width: 200px;
-  color: #ff0066;
+  color: #FFFD54;
   z-index: 4;
 }
 
 #level {
+  font-family: arial;
   position: absolute;
   right: 10px;
   bottom: -20px;
   width: 130px;
-  color: #ff0066;
+  color: #FFFD54;
   z-index: 4;
 }
 
-.start-menu {
-  /*position: absolute;*/
-/*  top: 300px;
-  left: 150px;*/
+.btn-container {
+  display: flex;
+  flex-flow: column nowrap;
+  position:absolute;
+  left: -135px;
+  bottom: 240px;
 }
-#start-button {
-  /*font-size: 24px;*/
-/*  width: 100px;
-  height: 50px;*/
-  border: none;
-  background-color: #FF0066;
-  z-index: 5;
+
+.game-btn {
+  height: 30px;
+  border: 1px solid #333E13;
+  background-color: #8CAB35;
+  font-size: 24px;
+  color: #FFFD54;
+}
+
+.start-btn-disabled {
+  background-color: #666363;
+  color: #EC5B62;
+}
+.start-btn-disabled:hover {
+  background-color: #666363;
 }
 button:hover {
   z-index: 5;
-  background-color: white;
+  background-color:#B2CF63;
 }
 
 #game-over-screen {

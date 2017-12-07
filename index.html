@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   <title>Game Time</title>
   <link rel="stylesheet" type="text/css" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body>
   <div class="game-container" id="game-container">
     <div class="btn-container">
-      <button id="start-button">Start</button>
-      <button id="pause-button">Pause</button>
-      <button id="new-game-button">New Game</button>
+      <button id="start-button" class="game-btn">Start</button>
+      <button id="pause-button" class="game-btn">Pause</button>
+      <button id="new-game-button" class="game-btn">New Game</button>
+    </div>
+    <div class="text-container">
+      <h1 id="title-banner">Frogger</h1>
       <h1 id="lives">Lives: <span class="lives-left">3</span></h1>
       <h1 id="level">Level: <span class="current-level">1</span></h1>
     </div>
