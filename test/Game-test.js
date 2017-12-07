@@ -1,8 +1,7 @@
 const {assert} = require('chai');
 const Game = require('../lib/Game.js')
 const LilyPad = require('../lib/LilyPad.js');
-const Log = require('../lib/Log.js');
-const Turtle = require('../lib/Turtle.js');
+const WaterObject = require('../lib/WaterObject.js');
 const Vehicle = require('../lib/Vehicle.js');
 
 global.document = {
