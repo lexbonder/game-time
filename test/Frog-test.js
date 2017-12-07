@@ -2,7 +2,6 @@ const {assert} = require('chai');
 const Frog = require('../lib/Frog.js');
 const Vehicle = require('../lib/Vehicle.js');
 const Water = require('../lib/Water.js')
-const Log = require('../lib/Log.js')
 const LilyPad = require('../lib/LilyPad.js')
 
 
