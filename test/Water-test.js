@@ -6,7 +6,7 @@ describe('Water', function() {
   let water;
   
   beforeEach(function() {
-    water = new Water(10, 10, 10, 10);
+    water = new Water(10, 10, 10, 10, 'transparent');
   })
 
   it('Should be a function', function() {
@@ -17,10 +17,11 @@ describe('Water', function() {
     assert.isObject(water);
   })
 
-  it('Should have an X, Y, width, height, speed, and color', function() {
+  it('Should have an X, Y, width, height, and color', function() {
     assert.equal(water.x, 10)
     assert.equal(water.y, 10)
     assert.equal(water.width, 10)
     assert.equal(water.height, 10)
+    assert.equal(water.color, 'transparent')
   })
 })

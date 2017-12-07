@@ -66,6 +66,22 @@ describe('Game', function() {
     assert.equal(leftCar.dx, 10.2)
     assert.equal(rightCar.dx, -10.2)
     assert.equal(turtle.dx, -10.2)
-
   })
+
+  it('Should indicate level 1', function () {
+    assert.equal(game.level, 1);
+  })
+
+  it('Should start the game unpaused', function () {
+    assert.equal(game.paused, false);
+  })
+
+  it('Should have an empty array for turtles, logs, lilys, and cars', function () {
+    assert.isArray(game.laneLeft);
+    assert.isArray(game.laneRight);
+    assert.isArray(game.lilyArray);
+    assert.isArray(game.logs);
+    assert.isArray(game.turtles);
+  })
+
 })
