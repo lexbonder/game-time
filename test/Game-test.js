@@ -1,4 +1,17 @@
+const {assert} = require('chai');
+const Game = require('../lib/Game.js')
 
+describe('Game', function() {
+  it('Should be a function', function() {
+    assert.isFunction(Game);
+  })
+
+  it.skip('Should create an instance of game', function() {
+    let game = new Game();
+    
+    assert.isObject(game);
+  })
+})
 
 // // Needs Game Constructor //
 //   it.skip('Should increase the level if 5 lilyPads are landed on', function() {
