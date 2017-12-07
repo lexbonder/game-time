@@ -2,14 +2,15 @@ const {assert} = require('chai');
 const Frog = require('../lib/Frog.js');
 const Vehicle = require('../lib/Vehicle.js');
 const Water = require('../lib/Water.js')
-const LilyPad = require('../lib/LilyPad.js')
+const LilyPad = require('../lib/LilyPad.js');
+const WaterObject = require('../lib/WaterObject.js')
 
 
 describe('Frog', function() {
   let frogger;
 
   beforeEach( function() {
-    frogger = new Frog(10,10,10,10,10,10,'green');
+    frogger = new Frog(10,10,10,10,'green',10,10);
   });
 
   it('Should be a function', function() {
@@ -21,7 +22,7 @@ describe('Frog', function() {
   })
   
   it('Should be able to take an x, y, width, height, Xspeed, Yspeed, and color value', function() {
-    var frogger = new Frog(10,20,30,40,50,60,'green');
+    var frogger = new Frog(10,20,30,40,'green',50,60);
 
     assert.equal(frogger.x, 10);
     assert.equal(frogger.y, 20);
@@ -35,7 +36,7 @@ describe('Frog', function() {
   it('Should be able to move up', function() {
     assert.equal(frogger.y, 10);
 
-    frogger.moveUp();
+    frogger.jump('up');
 
     assert.equal(frogger.y, 0);
   })
@@ -43,7 +44,7 @@ describe('Frog', function() {
   it('Should be able to move down', function() {
     assert.equal(frogger.y, 10);
 
-    frogger.moveDown();
+    frogger.jump('down');
 
     assert.equal(frogger.y, 20);
   })
@@ -51,7 +52,7 @@ describe('Frog', function() {
   it('Should be able to move left', function() {
     assert.equal(frogger.x, 10);
 
-    frogger.moveLeft();
+    frogger.jump('left');
 
     assert.equal(frogger.x, 0);
   }) 
@@ -59,7 +60,7 @@ describe('Frog', function() {
   it('Should be able to move right', function() {
     assert.equal(frogger.x, 10);
 
-    frogger.moveRight();
+    frogger.jump('right');
 
     assert.equal(frogger.x, 20);
   })
@@ -77,18 +78,18 @@ describe('Frog', function() {
 
   it('Should die when on water and not on a log', function () {
     let water = new Water(10,10,10,10)
-    let leftLog = new Log(20,20,20,20)
-    let rightLog = new Log(30,30,30,30)
+    let leftLog = new WaterObject(20,20,20,20)
+    let rightLog = new WaterObject(30,30,30,30)
 
     assert.equal(frogger.isAlive, true)
 
-    frogger.floatOrSink([leftLog], [rightLog],water)
+    frogger.floatOrSink([leftLog], [rightLog], water)
 
     assert.equal(frogger.isAlive, false)
   })
 
   it('Should move with a log', function() {
-    let log = new Log(10,10,10,10,10,'brown')
+    let log = new WaterObject(10,10,10,10,10,'brown')
 
     assert.equal(frogger.x, 10)
     frogger.isOnLog([log])
@@ -97,8 +98,8 @@ describe('Frog', function() {
 
   it('Should not die when on a log or turtle', function() {
     let water = new Water(10,10,10,10)
-    let leftLog = new Log(10,10,10,10)
-    let rightTurtle = new Log(30,30,30,30)
+    let leftLog = new WaterObject(10,10,10,10)
+    let rightTurtle = new WaterObject(30,30,30,30)
 
     assert.equal(frogger.isAlive, true)
 
@@ -125,7 +126,7 @@ describe('Frog', function() {
   it('Should go back to start when it respawns', function() {
     assert.equal(frogger.x, 10)
 
-    frogger.moveLeft()
+    frogger.jump('left')
 
     assert.equal(frogger.x, 0)
 
