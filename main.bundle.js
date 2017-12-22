@@ -44,27 +44,18 @@
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	var Game = __webpack_require__(1);
-
-	var levelDisplay = document.querySelector('.current-level');
-
-	var lifeCounter = document.querySelector('.lives-left');
-
-	var canvas = document.getElementById('game');
-
-	var bg = document.getElementById('game-bg');
-
-	var c = canvas.getContext('2d');
-
-	const game = new Game(canvas, c);
-
-	var bgCtx = bg.getContext('2d');
-
-	var startButton = document.getElementById('start-button');
-
-	var pauseButton = document.getElementById('pause-button');
-
-	var newGameButton = document.getElementById('new-game-button');
+	const Game = __webpack_require__(1);
+	const levelDisplay = document.querySelector('.current-level');
+	const lifeCounter = document.querySelector('.lives-left');
+	const background = new Image();
+	const canvas = document.getElementById('game');
+	const bg = document.getElementById('game-bg');
+	const c = canvas.getContext('2d');
+	const game = new Game(canvas.width);
+	const bgCtx = bg.getContext('2d');
+	const startButton = document.getElementById('start-button');
+	const pauseButton = document.getElementById('pause-button');
+	const newGameButton = document.getElementById('new-game-button');
 
 	window.addEventListener('keydown', function (pressedButton) {
 	  if (!game.paused) {
@@ -108,7 +99,7 @@
 
 	function gameLoop() {
 	  if (!game.paused && game.frogger.lives >= 0) {
-	    game.animate(lifeCounter, c, canvas);
+	    game.animate(lifeCounter, c, canvas.width, canvas.height);
 	    nextLevel();
 	    requestAnimationFrame(gameLoop);
 	  } else if (game.frogger.lives < 0) {
@@ -127,7 +118,7 @@
 	}
 
 	function nextLevel() {
-	  var landedPads = game.lilyArray.filter(lily => {
+	  const landedPads = game.lilyArray.filter(lily => {
 	    return lily.color === '#A3C544';
 	  });
 
@@ -136,7 +127,7 @@
 	    setTimeout(function () {
 	      game.level++;
 	      levelDisplay.innerText = game.level;
-	      game.frogger.respawn(canvas);
+	      game.frogger.respawn();
 	      game.speedUp();
 	      game.clearLilys();
 	      togglePause();
@@ -164,9 +155,9 @@
 	const WaterObject = __webpack_require__(7);
 
 	class Game {
-	  constructor(canvas) {
-	    this.water = new Water(0, 54, canvas.width, 228, 'transparent');
-	    this.frogger = new Frog(canvas.width / 2 - 10, 500, 20, 20, '#A3C544', 35, 34);
+	  constructor(canvasWidth) {
+	    this.water = new Water(0, 54, canvasWidth, 228, 'transparent');
+	    this.frogger = new Frog(canvasWidth / 2 - 10, 500, 20, 20, '#A3C544', 35, 34);
 	    this.laneLeft = [];
 	    this.laneRight = [];
 	    this.lilyArray = [];
@@ -236,23 +227,23 @@
 	    this.paused = false;
 	  }
 
-	  drawObjects(c, canvas) {
+	  drawObjects(c, canvasWidth) {
 	    this.water.draw(c);
 	    this.laneLeft.forEach(car => {
 	      car.draw(c);
-	      car.drive(canvas.width);
+	      car.drive(canvasWidth);
 	    });
 	    this.laneRight.forEach(car => {
 	      car.draw(c);
-	      car.opposingDrive(canvas.width);
+	      car.opposingDrive(canvasWidth);
 	    });
 	    this.logs.forEach(log => {
 	      log.draw(c);
-	      log.drive(canvas.width);
+	      log.drive(canvasWidth);
 	    });
 	    this.turtles.forEach(turtle => {
 	      turtle.draw(c);
-	      turtle.opposingDrive(canvas.width);
+	      turtle.opposingDrive(canvasWidth);
 	    });
 	    this.lilyArray.forEach(lily => {
 	      lily.draw(c);
@@ -260,20 +251,20 @@
 	    this.frogger.draw(c);
 	  }
 
-	  animate(lifeCounter, c, canvas) {
-	    c.clearRect(0, 0, canvas.width, canvas.height);
+	  animate(lifeCounter, c, canvasWidth, canvasHeight) {
+	    c.clearRect(0, 0, canvasWidth, canvasHeight);
 	    lifeCounter.innerText = this.frogger.lives;
 	    this.water.draw(c);
-	    this.drawObjects(c, canvas);
+	    this.drawObjects(c, canvasWidth);
 	    this.frogger.hitByCar(this.laneLeft, this.laneRight);
 	    this.frogger.floatOrSink(this.logs, this.turtles, this.water);
-	    this.frogger.onLilyPad(this.lilyArray, canvas.width);
-	    this.frogger.die(canvas);
-	    this.frogger.outOfBounds(canvas.width);
+	    this.frogger.onLilyPad(this.lilyArray);
+	    this.frogger.die();
+	    this.frogger.outOfBounds(canvasWidth);
 	  }
 
 	  reset() {
-	    this.frogger.respawn(canvas.height);
+	    this.frogger.respawn();
 	    this.clearLilys();
 	    this.frogger.deathClock = 81;
 	    this.frogger.lives = 3;
@@ -318,12 +309,12 @@
 	    return this;
 	  }
 
-	  move(canvas, pressedButton) {
+	  move(canvasWidth, pressedButton) {
 	    if (this.isAlive) {
 	      this.deathClock = 0;
 	      if (pressedButton === 'ArrowLeft' && this.x - this.width * 1.5 > 0) {
 	        this.jump('left');
-	      } else if (pressedButton === 'ArrowRight' && this.x + this.width * 2.5 < canvas) {
+	      } else if (pressedButton === 'ArrowRight' && this.x + this.width * 2.5 < canvasWidth) {
 	        this.jump('right');
 	      } else if (pressedButton === 'ArrowUp' && this.y >= 126) {
 	        this.jump('up');
@@ -403,8 +394,8 @@
 	    return onLilyPad;
 	  }
 
-	  outOfBounds(canvas) {
-	    if (this.x + this.width > canvas.width + this.width / 2 || this.x + this.width / 2 < 0) {
+	  outOfBounds(canvasWidth) {
+	    if (this.x + this.width > canvasWidth + this.width / 2 || this.x + this.width / 2 < 0) {
 	      this.isAlive = false;
 	    }
 	  }
