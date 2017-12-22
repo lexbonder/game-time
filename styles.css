@@ -9,7 +9,7 @@
 
 #game-bg {
 	z-index: 1;
-
+  background: url('./lib/froggerBG.jpg');
 }
 
 #game {
