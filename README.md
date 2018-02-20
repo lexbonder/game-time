@@ -19,5 +19,3 @@ Enabling the user to pause and unpause the game was a big challenge for us since
 We would like to implement the use of sprites rather than the squares we're currently using.
 
 # Screenshots
-
-![Game Play](http://g.recordit.co/R5HDOJwCKq.gif)
