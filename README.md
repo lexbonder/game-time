@@ -20,4 +20,4 @@ We would like to implement the use of sprites rather than the squares we're curr
 
 # Screenshots
 
-![GamePlay](http://g.recordit.co/R5HDOJwCKq.gif)
+!(http://g.recordit.co/R5HDOJwCKq.gif)
