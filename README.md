@@ -20,3 +20,4 @@ We would like to implement the use of sprites rather than the squares we're curr
 
 # Screenshots
 
+(http://g.recordit.co/R5HDOJwCKq.gif)
