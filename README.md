@@ -33,3 +33,5 @@ We would like to implement the use of sprites rather than the squares we're curr
 # Screenshots
 
 ![Home Screen](screenshots/home-screen.png)
+![Game Play](screenshots/in-game.png)
+![Game Over](screenshots/game-over.png)
